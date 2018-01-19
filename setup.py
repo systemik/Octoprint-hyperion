@@ -22,6 +22,7 @@ plugin_author = "Systemic"
 plugin_author_email = "trash@laverriere.org"
 plugin_url = "https://github.com/systemik/OctoPrint-hyperion"
 plugin_license = "Apache"
+plugin_requires = []
 
 plugin_additional_data = []
 plugin_additional_packages = []
