@@ -16,7 +16,7 @@
 plugin_identifier = "OctoprintHyperion"
 plugin_package = "octoprint_hyperion"
 plugin_name = "Octoprint-hyperion"
-plugin_version = "0.1.0"
+plugin_version = "0.1.1"
 plugin_description = """OctoPrint plugin for controling hyperion leds"""
 plugin_author = "Systemic"
 plugin_author_email = "trash@laverriere.org"
