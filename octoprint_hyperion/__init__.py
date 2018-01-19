@@ -19,7 +19,7 @@ import os
 import string
 import octoprint.plugin
 
-class OctoprintHyperion(octoprint.plugin.AssetPlugin,
+class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 							octoprint.plugin.SettingsPlugin,
 							octoprint.plugin.ShutdownPlugin,
 							octoprint.plugin.StartupPlugin,
@@ -61,8 +61,6 @@ class OctoprintHyperion(octoprint.plugin.AssetPlugin,
 	def on_settings_initialized(self):
 		self._logger.debug(u"OctoprintHyperion on_settings_load()")
 
-		self._register_leds()
-
 	def on_settings_save(self, data):
 		self._logger.debug(u"OctoprintHyperion on_settings_save()")
 		octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
@@ -90,7 +88,7 @@ __plugin_name__ = "Octoprint Hyperion"
 
 def __plugin_load__():
 	global __plugin_implementation__
-	__plugin_implementation__ = LEDStripControlPlugin()
+	__plugin_implementation__ = OctoprintHyperionPlugin()
 
 	global __plugin_hooks__
 	__plugin_hooks__ = {
