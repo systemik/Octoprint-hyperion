@@ -4,6 +4,17 @@ Based on https://github.com/google/OctoPrint-LEDStripControl
 
 ## Drive hyperion lights via MXXX commands
 
+You need to add the require MXXX command in your gcode or type it directely in the octoprint terminal.
+
+Example : 
+
+White lightning:
+    M150 -c FFFFFF
+Lights off:
+    M150 -x
+Start effect (keep the quote in the command):
+    M150 -e "Snake" 
+
 Usefull command args are -e ; -x ; -c
 
 Hyperion command line :
