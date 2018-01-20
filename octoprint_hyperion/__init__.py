@@ -26,21 +26,21 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 							octoprint.plugin.TemplatePlugin):
 
 	def __init__(self):
-		self._logger.debug(u"OctoprintHyperion init")
+		self._hyperion = None
 
 	def on_after_startup(self):
 		self._logger.debug(u"OctoprintHyperion Startup")
 
 	def on_shutdown(self):
 		self._logger.debug(u"OctoprintHyperion Shutdown")
-
-	def HandleM150(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
-		if gcode and cmd.startswith("M150"):
-			self._logger.debug(u"M150 Detected: %s" % (cmd,))
-			# Emulating Marlin 1.1.0's syntax
-			# https://github.com/MarlinFirmware/Marlin/blob/RC/Marlin/Marlin_main.cpp#L6133
+        
+	def HandleMXXX(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
+		self._logger.info("Hyperion command defined as %s" % (self._settings.get(['message'])))
+        message = self._settings.get(['message'])
+        if gcode and cmd.startswith(message):
+			self._logger.debug(u"Hyperion message Detected: %s" % (cmd,))
 			command = "hyperion-remote " + cmd
-			command = string.replace(command, 'M150 ', ' ')
+			command = string.replace(command, message, ' ')
 			command = command.lower()
 			returned_value = os.system(command)  # returns the exit code in unix
 			self._logger.debug(u"returned value: %s" % (command,))
@@ -56,15 +56,15 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 		]
 
 	def get_settings_defaults(self):
-		return dict(r=0, g=0, b=0, pigpiod=False)
+		return dict(message="MXXX")
 
 	def on_settings_initialized(self):
 		self._logger.debug(u"OctoprintHyperion on_settings_load()")
-
+        
 	def on_settings_save(self, data):
 		self._logger.debug(u"OctoprintHyperion on_settings_save()")
 		octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
-	
+        
 	##~~ Softwareupdate hook
 
 	def get_update_information(self):
@@ -93,6 +93,6 @@ def __plugin_load__():
 	global __plugin_hooks__
 	__plugin_hooks__ = {
 		"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information,
-		"octoprint.comm.protocol.gcode.queuing": __plugin_implementation__.HandleM150
+		"octoprint.comm.protocol.gcode.queuing": __plugin_implementation__.HandleMXXX
 	}
 
