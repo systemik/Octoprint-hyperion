@@ -42,6 +42,5 @@ Strobe blue
 Strobe Raspbmc
 Strobe white
 Color traces
-UDP listener
 X-Mas
     
