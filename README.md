@@ -1,12 +1,11 @@
+Based on https://github.com/google/OctoPrint-LEDStripControl
+
 # Octoprint-hyperion
 Drive hyperion lights via MXXX commands
 
 Usefull command args are -e ; -x ; -c
 
-
 Hyperion command line :
-
-hyperion-remote:
 
 Usage: hyperion-remote [OPTIONS]
 
