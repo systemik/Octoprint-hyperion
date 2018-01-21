@@ -37,6 +37,7 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 
 	def HandleMXXX(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
 		self._logger.info("Hyperion command defined as %s" % (self._settings.get(['message'])))
+		message = self._settings.get(['message'])
         if gcode and cmd.startswith(message):
 			self._logger.debug(u"Hyperion message Detected: %s" % (cmd,))
 			command = "hyperion-remote " + cmd
@@ -44,7 +45,7 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 			# Lower case the whole texte"
 			command = command.lower()
 			# Upper case first letter if this is an effect
-			command = '. '.join(map(lambda s: s.strip().capitalize(), x.split('e "')))
+			command = '. '.join(map(lambda s: s.strip().capitalize(), command.split('e "')))
 			returned_value = os.system(command)  # returns the exit code in unix
 			self._logger.debug(u"returned value: %s" % (command,))
 
