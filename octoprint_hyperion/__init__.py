@@ -37,7 +37,7 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 
 	def HandleMXXX(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
 		self._logger.info("Hyperion command defined as %s" % (self._settings.get(['message'])))
-		if gcode and cmd.startswith(message):
+        if gcode and cmd.startswith(message):
 			self._logger.debug(u"Hyperion message Detected: %s" % (cmd,))
 			command = "hyperion-remote " + cmd
 			command = string.replace(command, message, ' ')
