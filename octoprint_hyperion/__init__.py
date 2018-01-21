@@ -45,7 +45,7 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 			# Lower case the whole texte"
 			command = command.lower()
 			# Upper case first letter if this is an effect
-			command = '. '.join(map(lambda s: s.strip().capitalize(), command.split('e "')))
+			command = 'e "'.join(map(lambda s: s.strip().capitalize(), command.split('e "')))
 			returned_value = os.system(command)  # returns the exit code in unix
 			self._logger.debug(u"returned value: %s" % (command,))
 
