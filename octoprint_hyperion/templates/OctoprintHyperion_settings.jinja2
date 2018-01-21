@@ -3,36 +3,10 @@
 <br />
 <p>Hyperion must be installed and be working before using this plugin <a href="https://hyperion-project.org/">Hyperion</a>.</p>
 
-You need to add the require MXXX command in your gcode or type it directely in the octoprint terminal.
-<br />
-Example :
-<br />
-White lightning:
-    M150 -c FFFFFF
-<br />
-Lights off:
-    M150 -x
-<br />
-Start effect (keep the quote in the command):
-    M150 -e "Snake"
-<br />
-Usage: hyperion-remote [OPTIONS]
-<br />
-Parameters:
-  -c, --color <arg>
-  -e, --effect <arg>
-  -x, --clear
-      --clearall
-<br />
-Effect list :
-<br />
-Cinema brighten lights, Cinema dim lights, Knight rider, Blue mood blobs, Cold mood blobs, Full color mood blobs, Green mood blobs, Red mood blobs, Warm mood blobs, Police Lights Single, Police Lights Solid, Rainbow mood, Rainbow swirl fast, Rainbow swirl, Random, Running dots, System Shutdown, Snake, Sparks Color, Sparks, Strobe blue, Strobe Raspbmc, Strobe white, Color traces, X-Mas
-
-<br />
-
 <form class="form-horizontal">
+
 <div class="control-group">
-    <label class="control-label" for="message">MXXX message to watch for</label>
+    <label class="control-label" for="message">MXXX message to watch for:</label>
     <div class="controls">
         <div class="input-append">
             <input type="text" class="input-block-level" data-bind="value: settings.plugins.OctoprintHyperion.message">
@@ -41,3 +15,35 @@ Cinema brighten lights, Cinema dim lights, Knight rider, Blue mood blobs, Cold m
 </div>
 
 </form>
+You need to add the require MXXX command in your gcode or type it directely in the octoprint terminal.
+<br />
+Example :
+<br>
+
+White lightning: M150 -c FFFFFF
+<br />
+<br />
+Lights off: M150 -x
+<br />
+<br />
+Start effect (keep the quote in the command): M150 -e "Snake"
+<br />
+<br />
+Start Rainbow effect for 5 seconds M150 -e "Rainbow swirl fast" --duration 5000
+<br />
+<br /><br />
+Usage: hyperion-remote [OPTIONS]
+<br />
+<br />
+Parameters:<br />
+  -c, --color 'arg''<br />
+  -e, --effect 'arg'<br />
+  -x, --clear<br />
+      --clearall<br />
+<br />
+Effect list :
+<br />
+<br />
+Cinema brighten lights, Cinema dim lights, Knight rider, Blue mood blobs, Cold mood blobs, Full color mood blobs, Green mood blobs, Red mood blobs, Warm mood blobs, Police Lights Single, Police Lights Solid, Rainbow mood, Rainbow swirl fast, Rainbow swirl, Random, Running dots, System Shutdown, Snake, Sparks Color, Sparks, Strobe blue, Strobe Raspbmc, Strobe white, Color traces, X-Mas
+
+<br />
