@@ -30,13 +30,13 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 
 	def on_after_startup(self):
 		self._logger.debug(u"OctoprintHyperion Startup")
+		message = self._settings.get(['message'])
 
 	def on_shutdown(self):
 		self._logger.debug(u"OctoprintHyperion Shutdown")
 
 	def HandleMXXX(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
 		self._logger.info("Hyperion command defined as %s" % (self._settings.get(['message'])))
-		message = self._settings.get(['message'])
 		if gcode and cmd.startswith(message):
 			self._logger.debug(u"Hyperion message Detected: %s" % (cmd,))
 			command = "hyperion-remote " + cmd
