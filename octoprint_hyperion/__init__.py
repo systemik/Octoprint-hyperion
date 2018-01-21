@@ -42,7 +42,10 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 			self._logger.debug(u"Hyperion message Detected: %s" % (cmd,))
 			command = "hyperion-remote " + cmd
 			command = string.replace(command, message, ' ')
+            # Lower case the whole texte"
 			command = command.lower()
+            # Upper case first letter if this is an effect
+            command = '. '.join(map(lambda s: s.strip().capitalize(), x.split('e "')))
 			returned_value = os.system(command)  # returns the exit code in unix
 			self._logger.debug(u"returned value: %s" % (command,))
             
