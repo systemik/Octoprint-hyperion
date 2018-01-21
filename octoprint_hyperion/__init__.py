@@ -30,25 +30,25 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 
 	def on_after_startup(self):
 		self._logger.debug(u"OctoprintHyperion Startup")
-        message = self._settings.get(['message'])
+		message = self._settings.get(['message'])
 
 	def on_shutdown(self):
 		self._logger.debug(u"OctoprintHyperion Shutdown")
-        
+
 	def HandleMXXX(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
 		self._logger.info("Hyperion command defined as %s" % (self._settings.get(['message'])))
-        
-        if gcode and cmd.startswith(message):
+
+		if gcode and cmd.startswith(message):
 			self._logger.debug(u"Hyperion message Detected: %s" % (cmd,))
 			command = "hyperion-remote " + cmd
 			command = string.replace(command, message, ' ')
-            # Lower case the whole texte"
+			# Lower case the whole texte"
 			command = command.lower()
-            # Upper case first letter if this is an effect
-            command = '. '.join(map(lambda s: s.strip().capitalize(), x.split('e "')))
+			# Upper case first letter if this is an effect
+			command = '. '.join(map(lambda s: s.strip().capitalize(), x.split('e "')))
 			returned_value = os.system(command)  # returns the exit code in unix
 			self._logger.debug(u"returned value: %s" % (command,))
-            
+
 	##~~ SettingsPlugin mixin
 
 	def get_settings_version(self):
@@ -64,11 +64,11 @@ class OctoprintHyperionPlugin(octoprint.plugin.AssetPlugin,
 
 	def on_settings_initialized(self):
 		self._logger.debug(u"OctoprintHyperion on_settings_load()")
-        
+
 	def on_settings_save(self, data):
 		self._logger.debug(u"OctoprintHyperion on_settings_save()")
 		octoprint.plugin.SettingsPlugin.on_settings_save(self, data)
-        
+
 	##~~ Softwareupdate hook
 
 	def get_update_information(self):
@@ -99,4 +99,3 @@ def __plugin_load__():
 		"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information,
 		"octoprint.comm.protocol.gcode.queuing": __plugin_implementation__.HandleMXXX
 	}
-
