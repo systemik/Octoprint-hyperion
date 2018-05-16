@@ -6,14 +6,14 @@ Based on https://github.com/google/OctoPrint-LEDStripControl
 
 You need to add the require MXXX command in your gcode or type it directely in the octoprint terminal.
 
-Example : 
+Example :
 
-White lightning:
+- White lightning:
     M150 -c FFFFFF
-Lights off:
+- Lights off:
     M150 -x
-Start effect (keep the quote in the command):
-    M150 -e "Snake" 
+- Start effect (keep the quote in the command):
+    M150 -e "Snake"
 
 Usefull command args are -e ; -x ; -c
 
@@ -26,7 +26,7 @@ Parameters:
 -  -e, --effect <arg>
 -  -x, --clear
 -  --clearall
-    
+
 Effect list :
 
 - Cinema brighten lights
